@@ -1,0 +1,19 @@
+{
+  "name": "PolymerBolierplate",
+  "version": "0.0.0",
+  "private": true,
+  "homepage": "https://github.com/Starcounter/PolymerBolierplate",
+  "description": "Minimum amount of code to create a Polyjuice Application.",
+  "main": "Server/Master.json.cs",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Client/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

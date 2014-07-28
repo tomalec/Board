@@ -1,0 +1,24 @@
+﻿<template bind="{{Board}}">
+	<h2><i class="threads-icon"></i>Threads</h2>
+	<div>
+		<ul>
+			<template repeat="{{Threads$}}">
+				<li>
+					<h3>{{title}}</h3>
+					<p>{body | trimmed}{{body}}</p>
+					{comments}
+
+					<button class="launcher-button" style="background-color:#E82C0C" onclick="checkThis(this)">Remove</button>
+				</li>
+			</template>
+		</ul>
+	</div>
+</template>
+<script>
+ // TODO: remove me from global scope! (tomalec)
+ function checkThis( elem ){
+     // debugger;
+     var model = getModel(elem);
+     delete model.$parent[ model.$parent.indexOf( model )];
+ }
+ </script>

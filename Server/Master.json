@@ -1,0 +1,10 @@
+{
+   Html:"",
+   TabName$:"",
+   Menu: { 
+      Items:[
+         { Icon:"", Label:"", Uri:"" }
+      ],
+   },
+   ApplicationPage: { }
+}

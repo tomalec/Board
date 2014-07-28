@@ -1,0 +1,15 @@
+<template bind="{{Board}}">
+	<div>
+		<h1><a href="/launcher/workspace/board"><i class="bottle-icon"></i>Board App</a></h1>
+		<template if="{{Threads}}">
+			<ul>
+				<template repeat="{{Threads}}">
+					<li>{{title}}</li>
+				</template>
+				<template if="{{ Threads.length >= 5 }}">
+					<li><a href="/launcher/workspace/board/threads">...</a></li>
+				</template>
+			</ul>
+		</template>
+	</div>
+</template>
