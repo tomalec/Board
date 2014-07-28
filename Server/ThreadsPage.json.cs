@@ -18,9 +18,11 @@ partial class ThreadsPageThreads : Page, IBound<Board.Thread>
         
     //     Transaction.Commit();
     // }
-    // void Handle(Input.Amount input)
-    // {
-    //     Amount = input.Value;
-    //     Transaction.Commit();
-    // }
+    void Handle(Input.remove input)
+    {
+        this.Data.Delete();
+        Transaction.Commit();
+        ((Starcounter.Arr<ThreadsPageThreads>)this.Parent).Remove(this);
+       
+    }
 }
