@@ -15,5 +15,7 @@
     "tests"
   ],
   "dependencies": {
+    "sgb-markdownedit": "Smorgasbord-Development/sgb-markdownedit",
+    "sgb-markdownview": "Smorgasbord-Development/sgb-markdownview"
   }
 }

@@ -1,7 +1,9 @@
-﻿<template bind="{{Board}}">
+﻿<link rel="import" href="/vendor/sgb-markdownedit/sgb-markdownedit.html">
+<template bind="{{Board}}">
 	<h2>New thread</h2>
 	<input update-on="blur" value="{{title$}}" placeholder="Title" title="Title">
-	<textarea update-on="blur" value="{{body$}}" placeholder="Posting body &lt;sgb-markdownedit&gt;"></textarea>
+	<!-- <textarea update-on="blur" value="{{body$}}" placeholder="Posting body &lt;sgb-markdownedit&gt;"></textarea> -->
+	<sgb-markdownedit update-on="blur" value="{{body$}}" placeholder="Posting body &lt;sgb-markdownedit&gt;"></sgb-markdownedit>
 	<div>
 		Contact into: &lt;launcher-partial ref="{Contact}"&gt;
 		Attached to: &lt;launcher-partial ref="{Category/AttachedTo/Thing}"&gt;

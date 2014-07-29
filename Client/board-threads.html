@@ -1,11 +1,15 @@
-﻿<template bind="{{Board}}">
+﻿<link rel="import" href="/vendor/sgb-markdownview/sgb-markdownview.html">
+<template bind="{{Board}}">
 	<h2><i class="threads-icon"></i>Threads</h2>
 	<div>
 		<ul>
 			<template repeat="{{Threads$}}">
 				<li>
 					<h3>{{title}}</h3>
-					<p>{body | trimmed}{{body}}</p>
+					<p>
+						<sgb-markdownview value="{{body}}"></sgb-markdownview>
+						{body | trimmed}
+					</p>
 					{comments}
 
 					<button class="launcher-button" style="background-color:#E82C0C" onclick="getModel(this).remove$ = null">Remove</button>
