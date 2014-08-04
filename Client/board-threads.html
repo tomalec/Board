@@ -10,6 +10,7 @@
 						<sgb-markdownview value="{{Text}}"></sgb-markdownview>
 						{Text | trimmed}
 					</p>
+					Author: {{Author.FullName}}
 					{comments}
 
 					<button class="launcher-button" style="background-color:#E82C0C" onclick="getModel(this).remove$ = null">Remove</button>
