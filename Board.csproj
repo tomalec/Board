@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Thread.cs" />
-    <Compile Include="Database\SO.cs" />
+    <Compile Include="Database\Relations.cs" />
     <Compile Include="Server\AddThreadPage.json.cs">
       <DependentUpon>AddThreadPage.json</DependentUpon>
     </Compile>
