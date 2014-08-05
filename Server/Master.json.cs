@@ -1,4 +1,5 @@
 using Starcounter;                                  // Most stuff relating to the database, JSON and communication is in this namespace
+using Concepts.Ring1;
 
 [Master_json]                                       // This attribute tells Starcounter that the class corresponds to an object in the JSON-by-example file.
 partial class Master : Page {
@@ -47,7 +48,7 @@ partial class Master : Page {
         //         Html = "/primary-create.html"
         //     };
         //     return p;
-        // });
+        // });        
 
         // Polyjuice hadlers
         // Note that all handlers could be mapped so serve content for different URLs
@@ -114,6 +115,42 @@ partial class Master : Page {
             page.Session = Session.Current;
             return page;
         });
+
+        // Thread page
+        Handle.GET("/board/threads/{?}", (string objectId) =>
+        {
+            ThreadPage c = new ThreadPage()
+            {
+                Html = "/board-thead-full.html"
+            };
+            var thread = SQL<Board.Thread>("SELECT t FROM Board.Thread t WHERE ObjectId = ?", objectId).First;
+            c.Data = thread;
+            //c.Uri = "/launcher/workspace/supercrm/companies/" + objectId;
+            c.Transaction = new Transaction();
+            c.Session = Session.Current;
+
+            c.Author = (Page)X.GET("/board/partials/author/" + thread.Author.GetObjectID());
+
+            return c;
+        });
+
+        
+        // Author partial
+        Handle.GET("/board/partials/author/{?}", (string objectId) =>
+        {
+            Page c = new Page()
+            {
+                Html = "/board-author.html"
+            };
+            var thread = SQL<Somebody>("SELECT t FROM Somebody t WHERE ObjectId = ?", objectId).First;
+            c.Data = thread;
+            //c.Uri = "/launcher/workspace/supercrm/companies/" + objectId;
+            c.Transaction = new Transaction();
+            c.Session = Session.Current;
+
+            return c;
+        }
+        );
 
 
         // Map workspace call to list, and add tiles 

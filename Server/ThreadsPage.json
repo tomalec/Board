@@ -4,6 +4,7 @@
  "Threads$": [{
 		"title": "",
 		"Text": "",
+		"Uri": "",
 		"remove$": null,
 		"Author":{
 			"FullName": "Author Name"

@@ -5,7 +5,7 @@
 		<ul>
 			<template repeat="{{Threads$}}">
 				<li>
-					<h3>{{title}}</h3>
+					<h3><a href="{{Uri}}">{{title}}</a></h3>
 					<p>
 						<sgb-markdownview value="{{Text}}"></sgb-markdownview>
 						{Text | trimmed}

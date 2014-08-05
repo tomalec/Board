@@ -3,6 +3,13 @@ using Starcounter;
 [ThreadsPage_json]
 partial class ThreadsPage : Page
 {
+    protected override string UriFragment
+    {
+        get
+        {
+            return "threads/";
+        }
+    }
 }
 
 
@@ -24,5 +31,12 @@ partial class ThreadsPageThreads : Page, IBound<Board.Thread>
         Transaction.Commit();
         ((Starcounter.Arr<ThreadsPageThreads>)this.Parent).Remove(this);
        
+    }
+    protected override string UriFragment
+    {
+        get
+        {
+            return Data.GetObjectID();
+        }
     }
 }

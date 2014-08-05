@@ -1,0 +1,19 @@
+<link rel="import" href="/vendor/sgb-markdownview/sgb-markdownview.html">
+<template bind="{{Board}}">
+	<h2>{{title}}</h2>
+	<p>
+		<sgb-markdownview value="{{Text}}"></sgb-markdownview>
+		{Text | trimmed}
+	</p>
+	<div>
+		Author: {{Author}}
+		<!-- <launcher-template content="{{ Author }}"></launcher-template> -->
+	        <juicy-tile-grid id="juicy-tile:{{Author}}" disabled>
+	            <template is="imported-template" content="{{ Author }}"></template>
+	        </juicy-tile-grid>
+	</div>
+	{comments}
+
+	<button class="launcher-button" style="background-color:#E82C0C" onclick="getModel(this).remove$ = null">Remove</button>
+	<!-- <button class="launcher-button" style="background-color:#E82C0C" onclick="getModel(this).edit$ = null">Edit</button> -->
+</template>

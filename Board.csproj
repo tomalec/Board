@@ -81,6 +81,9 @@
     <Compile Include="Server\AddThreadPage.json.cs">
       <DependentUpon>AddThreadPage.json</DependentUpon>
     </Compile>
+    <Compile Include="Server\ThreadPage.json.cs">
+      <DependentUpon>ThreadPage.json</DependentUpon>
+    </Compile>
     <Compile Include="Server\DashboardPage.json.cs">
       <DependentUpon>DashboardPage.json</DependentUpon>
     </Compile>
@@ -103,8 +106,10 @@
   <ItemGroup>
     <Content Include="Client\board-dashboard.html" />
     <Content Include="Client\board-menu.html" />
+    <Content Include="Client\board-thread-full.html" />
     <Content Include="Client\board-threads-add.html" />
     <Content Include="Client\board-threads.html" />
+    <Content Include="Client\board-author.html" />
   </ItemGroup>
   <ItemGroup>
     <TypedJSON Include="Server\Page.json">
@@ -123,6 +128,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypedJSON Include="Server\DashboardPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+  </ItemGroup>
+  <ItemGroup>
+    <TypedJSON Include="Server\ThreadPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
   </ItemGroup>
