@@ -110,7 +110,6 @@ partial class Master : Page {
                 Html = "/board-threads.html"
             };
             page.Transaction = new Transaction();
-            page.Session = Session.Current;
 
             // var threads = SQL<Starcounter.Json>("SELECT t, SUBSTR(t.body, 0, 255) as shortBody FROM Board.Thread t");
             var threads = SQL<Board.Thread>("SELECT t FROM Board.Thread t");
@@ -132,7 +131,6 @@ partial class Master : Page {
             {
                 page.Data = new Board.Thread();
             });
-            page.Session = Session.Current;
             return page;
         });
 
@@ -146,7 +144,6 @@ partial class Master : Page {
             var thread = SQL<Board.Thread>("SELECT t FROM Board.Thread t WHERE ObjectId = ?", objectId).First;
             c.Data = thread;
             c.Transaction = new Transaction();
-            c.Session = Session.Current;
 
             c.Author = (Page)X.GET("/board/partials/author/" + thread.Author.GetObjectID());
 
@@ -186,7 +183,6 @@ partial class Master : Page {
 
 
             //page.Uri = "/launcher/workspace/supercrm/companies/" + objectId;
-            page.Session = Session.Current;
 
             return page;
         }
