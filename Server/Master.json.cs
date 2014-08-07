@@ -9,7 +9,25 @@ partial class Master : Page {
     /// Every application in Starcounter works like a console application. They have an .EXE ending. They have a Main() function and
     /// they can do console output. However, they are run inside the scope of a database rather than connecting to it.
     /// </summary>
-    static void Main() {
+    static void Main()
+    {
+        // Mapper
+        HandlerOptions h1 = new HandlerOptions() { HandlerLevel = 1 };
+        HandlerOptions h0 = new HandlerOptions() { HandlerLevel = 0 };
+
+        Handle.GET("/board/partials/author/{?}", (string objectId) =>
+        {
+            return (Json)X.GET("/societyobjects/ring1/person/" + objectId);
+        }, h0);
+
+        Handle.GET("/societyobjects/ring1/person/{?}", (string objectId) =>
+        {
+            return (Json)X.GET("/board/partials/author/" + objectId, 0, h1);
+        }, h0);
+
+        // Setting default handler level to 1.
+        HandlerOptions.DefaultHandlerLevel = 1;
+        Handlers.AddExtraHandlerLevel();
         
         // Handle.POST("/init-demo-data", () => {      // The Handle class is where you register new handlers for incomming requests.
         //     DemoData.Create();                      // Will create some demo data.
@@ -50,6 +68,7 @@ partial class Master : Page {
         //     };
         //     return p;
         // });        
+
 
         // Polyjuice hadlers
         // Note that all handlers could be mapped so serve content for different URLs
@@ -138,18 +157,38 @@ partial class Master : Page {
         // Author partial
         Handle.GET("/board/partials/author/{?}", (string objectId) =>
         {
-            Page c = new AuthorPage()
+            Page page = new AuthorPage()
             {
                 Html = "/board-author.html"
             };
-            var thread = SQL<Somebody>("SELECT t FROM Somebody t WHERE ObjectId = ?", objectId).First;
-            c.Data = thread;
+            var author = SQL<Somebody>("SELECT t FROM Somebody t WHERE ObjectId = ?", objectId).First;
 
-            //c.Uri = "/launcher/workspace/supercrm/companies/" + objectId;
-            c.Transaction = new Transaction();
-            c.Session = Session.Current;
+            page.Transaction = new Transaction();
+            if (author == null)
+            {
+                page.Transaction.Add(() =>
+                {
+                    author = new Somebody()
+                    {
+                    };
+                    page.Data = author;
+                });
+            }
+            else
+            {
 
-            return c;
+                page.Data = author;
+            }
+            // if (author.Email == "")
+            // {
+            //     page.Editing = true;
+            // }
+
+
+            //page.Uri = "/launcher/workspace/supercrm/companies/" + objectId;
+            page.Session = Session.Current;
+
+            return page;
         }
         );
 
