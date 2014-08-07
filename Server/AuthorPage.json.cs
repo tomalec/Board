@@ -1,7 +1,7 @@
 using Starcounter;
 
-[ThreadPage_json]
-partial class ThreadPage : Page
+[AuthorPage_json]
+partial class AuthorPage : Page
 {
     protected override string UriFragment
     {

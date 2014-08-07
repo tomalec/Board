@@ -6,11 +6,13 @@
 		{Text | trimmed}
 	</p>
 	<div>
-		Author: {{Author}}
+		Author: {{Author.Html}}
 		<!-- <launcher-template content="{{ Author }}"></launcher-template> -->
-	        <juicy-tile-grid id="juicy-tile:{{Author}}" disabled>
-	            <template is="imported-template" content="{{ Author }}"></template>
+		<template bind="{{Author}}">
+	        <juicy-tile-grid id="juicy-tile:{{Html}}" disabled>
+	            <template is="imported-template" content="{{ Html }}"></template>
 	        </juicy-tile-grid>
+	        </template>
 	</div>
 	{comments}
 

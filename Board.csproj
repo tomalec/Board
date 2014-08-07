@@ -81,6 +81,9 @@
     <Compile Include="Server\AddThreadPage.json.cs">
       <DependentUpon>AddThreadPage.json</DependentUpon>
     </Compile>
+    <Compile Include="Server\AuthorPage.json.cs">
+      <DependentUpon>AuthorPage.json</DependentUpon>
+    </Compile>
     <Compile Include="Server\ThreadPage.json.cs">
       <DependentUpon>ThreadPage.json</DependentUpon>
     </Compile>
@@ -133,6 +136,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypedJSON Include="Server\ThreadPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+  </ItemGroup>
+  <ItemGroup>
+    <TypedJSON Include="Server\AuthorPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
   </ItemGroup>
